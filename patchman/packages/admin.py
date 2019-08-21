@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Patchman. If not, see <http://www.gnu.org/licenses/>
 
+from __future__ import unicode_literals
+
 from django.contrib import admin
 from patchman.packages.models import Package, PackageName, \
     PackageUpdate, Erratum, ErratumReference
@@ -22,6 +24,7 @@ from patchman.packages.models import Package, PackageName, \
 
 class ErratumAdmin(admin.ModelAdmin):
     readonly_fields = ('packages',)
+
 
 admin.site.register(Package)
 admin.site.register(PackageName)

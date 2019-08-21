@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Patchman. If not, see <http://www.gnu.org/licenses/>
 
+from __future__ import unicode_literals
+
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, render
@@ -130,9 +132,10 @@ def report_detail(request, report):
 def report_process(request, report):
 
     report = get_object_or_404(Report, id=report)
+    report.process()
 
     return render(request,
-                  'reports/report_process.html',
+                  'reports/report_detail.html',
                   {'report': report}, )
 
 
