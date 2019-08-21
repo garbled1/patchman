@@ -15,11 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with Patchman. If not, see <http://www.gnu.org/licenses/>
 
+from __future__ import unicode_literals
+
 from django.contrib import admin
 from patchman.reports.models import Report
 
 
 class ReportAdmin(admin.ModelAdmin):
     readonly_fields = ('packages',)
+
 
 admin.site.register(Report, ReportAdmin)

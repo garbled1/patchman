@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Patchman. If not, see <http://www.gnu.org/licenses/>
 
+from __future__ import unicode_literals
+
 import re
 
 from django.db import IntegrityError, DatabaseError, transaction
@@ -93,7 +95,7 @@ def process_packages(report, host):
 
         for package in host.packages.all():
             if package.id not in package_ids:
-               host.packages.remove(package)
+                host.packages.remove(package)
 
 
 def process_updates(report, host):
@@ -268,8 +270,7 @@ def process_repo(repo, arch):
             repository.auth_required = True
             with transaction.atomic():
                 repository.save()
-        if mirror['url'].startswith('http://security') or \
-                mirror['url'].startswith('https://security'):
+        if mirror['url'].find('security') != -1:
             repository.security = True
             with transaction.atomic():
                 repository.save()

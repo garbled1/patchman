@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Patchman. If not, see <http://www.gnu.org/licenses/>
 
-from __future__ import print_function
+from __future__ import unicode_literals, print_function
 
 import os
 import sys
@@ -61,7 +61,7 @@ def create_pbar(ptext, plength, **kwargs):
     """
     global pbar, verbose
     if verbose and plength > 0:
-        jtext = str.ljust(ptext, 35)
+        jtext = unicode.ljust(unicode(ptext), 35)
         pbar = ProgressBar(widgets=[Style.RESET_ALL + Fore.YELLOW + jtext,
                                     Percentage(), Bar(), ETA()],
                            maxval=plength).start()
